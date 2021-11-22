@@ -15,21 +15,21 @@ class CreateFunctionDoublequote extends Migration
     public function up()
     {
 
-        /**
-            DROP FUNCTION IF EXISTS `DOUBLEQUOTE`; 
-            CREATE FUNCTION `DOUBLEQUOTE`(`val` TEXT) 
-            RETURNS TEXT CHARSET latin1 NOT DETERMINISTIC NO SQL SQL SECURITY DEFINER 
-            RETURN CONCAT('"', REPLACE( REPLACE(val, '\\', '\\\\') , '"', '\\"'), '"')
-         */
+        // /**
+        //     DROP FUNCTION IF EXISTS `DOUBLEQUOTE`; 
+        //     CREATE FUNCTION `DOUBLEQUOTE`(`val` TEXT) 
+        //     RETURNS TEXT CHARSET latin1 NOT DETERMINISTIC NO SQL SQL SECURITY DEFINER 
+        //     RETURN CONCAT('"', REPLACE( REPLACE(val, '\\', '\\\\') , '"', '\\"'), '"')
+        //  */
 
-        $query = <<<EOD
-        DROP FUNCTION IF EXISTS `DOUBLEQUOTE`; 
-        CREATE FUNCTION `DOUBLEQUOTE`(`val` TEXT) 
-        RETURNS TEXT CHARSET latin1 NOT DETERMINISTIC NO SQL SQL SECURITY DEFINER 
-        RETURN CONCAT('"', REPLACE( REPLACE(val, '\\\\', '\\\\\\\\') , '"', '\\\\"'), '"')
-        EOD;
+        // $query = <<<EOD
+        // DROP FUNCTION IF EXISTS `DOUBLEQUOTE`; 
+        // CREATE FUNCTION `DOUBLEQUOTE`(`val` TEXT) 
+        // RETURNS TEXT CHARSET latin1 NOT DETERMINISTIC NO SQL SQL SECURITY DEFINER 
+        // RETURN CONCAT('"', REPLACE( REPLACE(val, '\\\\', '\\\\\\\\') , '"', '\\\\"'), '"')
+        // EOD;
 
-        DB::unprepared($query);
+        // DB::unprepared($query);
     }
 
     /**
@@ -39,6 +39,6 @@ class CreateFunctionDoublequote extends Migration
      */
     public function down()
     {
-        DB::unprepared('DROP FUNCTION IF EXISTS DOUBLEQUOTE');
+        // DB::unprepared('DROP FUNCTION IF EXISTS DOUBLEQUOTE');
     }
 }

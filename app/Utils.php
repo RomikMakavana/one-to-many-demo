@@ -12,7 +12,7 @@ class Utils extends Model
         $vals = [];
         foreach ($keyValues as $key => $value) {
             $k = (string)Str::of('\'"?": \'')->replaceArray('?', [$key]);
-            $v = (string)Str::of("DOUBLEQUOTE(IFNULL(?,''))")->replaceArray('?', [$value]);
+            $v = (string)Str::of("JSON_QUOTE(IFNULL(?,''))")->replaceArray('?', [$value]);
             $vals[] = $k . "," . $v;
         }
         $vals = implode(",',',", $vals);
